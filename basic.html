@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript basics</title>
+</head>
+
+<body>
+    <h1>Javascript basics</h1>
+    <ul>
+        <li>Spring</li>
+        <li>Summer</li>
+        <li>Fall</li>
+        <li>Winter</li>
+    </ul>
+    <script>
+        //generator
+       function* iterable () {
+        //return 
+        yield "hi"
+        console.log("hi console")
+        yield "hi 2"
+        console.log("We continue with more instructions")
+        yield "hi 3"
+        yield "hi 4"
+       }
+
+       let iterator = iterable()
+       /*
+       console.log(iterator.next())
+       console.log(iterator.next())
+       console.log(iterator.next())
+       */ 
+
+       for (let y of iterator) {
+        console.log(y)
+       }
+
+       const arr = [...iterable()]
+       console.log(arr)
+
+       function square(value) {
+        setTimeout(() => {
+           console.log({value, result: value * value})
+           //return console.log([value, result: value * value]) 
+        }, Math.random() * 1000);
+
+        return {
+            value, 
+            result: value * value
+        }
+       }
+
+       function* generator(){
+        console.log("Start generator")
+        yield square(0)
+        yield square(1)
+        yield square(2)
+        yield square(3)
+        yield square(4)
+        console.log("End generator")
+       }
+
+       let gen = generator()
+       for (let y of gen) {
+        console.log(y)
+       }
+    </script>
+</body>
+
+</html>
